@@ -1,5 +1,8 @@
 package com.yansong_wang.pathinpalm;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -97,5 +101,26 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadPathMap();
+    }
+
+    private void loadPathMap() {
+        ImageView mapImageView = (ImageView) findViewById(R.id.mapImageView);
+        Drawable[] mapLayers = loadMapLayers();
+        LayerDrawable layerDrawable = new LayerDrawable(mapLayers);
+        mapImageView.setImageDrawable(layerDrawable);
+    }
+
+    private Drawable[] loadMapLayers() {
+        Drawable[] layers = new Drawable[2];
+        Resources resources = getResources();
+        layers[0] = resources.getDrawable(R.drawable.pathmap_weekend);
+        layers[1] = resources.getDrawable(R.drawable.pathmap_weekday);
+        return layers;
     }
 }
