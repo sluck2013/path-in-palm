@@ -8,7 +8,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity
     private void inflateFragment() {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .add(R.id.layout_map_wrapper_view, new MapFragment())
+                .add(R.id.layout_main_content, new MapFragment())
                 .commit();
     }
 
