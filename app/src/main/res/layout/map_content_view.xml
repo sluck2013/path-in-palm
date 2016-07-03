@@ -13,7 +13,7 @@
     tools:showIn="@layout/map_wrapper_view">
 
     <ImageView
-        android:id="@+id/mapImageView"
+        android:id="@+id/img_view_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>
